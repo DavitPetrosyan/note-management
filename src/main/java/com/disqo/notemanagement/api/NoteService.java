@@ -3,7 +3,6 @@ package com.disqo.notemanagement.api;
 import com.disqo.notemanagement.model.NoteDto;
 
 import java.util.Collection;
-import java.util.List;
 
 /**
  * Main api of note management.
@@ -40,13 +39,6 @@ public interface NoteService {
 	Object createNote(NoteDto noteDto);
 
 	/**
-	 * Creates new notes.
-	 * @param noteDtoList   List of new notes.
-	 * @return              Returns object of type Object.
-	 */
-	Object createNotes(List<NoteDto> noteDtoList);
-
-	/**
 	 * Updates provided noteDto object.
 	 * @param noteDto       NoteDto object with new data.
 	 * @return              returns object of type Object.
@@ -60,10 +52,4 @@ public interface NoteService {
 	 */
 	Object deleteNote(Integer noteId);
 
-	/**
-	 * Deletes provided user all notes.
-	 * @param userId           Provided user id.
-	 * @return                  Returns object of type Object
-	 */
-	Object deleteUserNotes(Integer userId);
 }
