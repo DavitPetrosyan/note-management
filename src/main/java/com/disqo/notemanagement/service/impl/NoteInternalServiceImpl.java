@@ -1,13 +1,13 @@
 package com.disqo.notemanagement.service.impl;
 
 import com.disqo.notemanagement.dao.NoteDao;
+import com.disqo.notemanagement.exception.CustomNoteException;
 import com.disqo.notemanagement.model.NoteDto;
 import com.disqo.notemanagement.service.NoteInternalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.NoSuchElementException;
 
 /**
  * author by davitpetrosyan on 2019-05-20.
@@ -35,7 +35,7 @@ public class NoteInternalServiceImpl implements NoteInternalService {
 
 	@Override
 	public NoteDto getNoteById(Integer noteId) {
-		return this.noteDao.fetchNoteById(noteId).orElseThrow(NoSuchElementException::new); //TODO @Davit, create custom own exception
+		return this.noteDao.fetchNoteById(noteId).orElseThrow(CustomNoteException::new); //TODO @Davit, create custom own exception
 	}
 
 	@Override

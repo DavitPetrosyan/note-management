@@ -52,7 +52,11 @@ public class NoteDaoImpl implements NoteDao {
 		parameters.put("note", noteDto.getNote());
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 		this.jdbcTemplate.update(SQLQueriesConstants.CREATE_NOTE, new MapSqlParameterSource(parameters), keyHolder);
-		return keyHolder.getKey().intValue();
+		if (keyHolder.getKeys().size() > 1) { //TODO @Davit, maybe can move to script?
+			return (int)keyHolder.getKeys().get("id");
+		} else {
+			return keyHolder.getKey().intValue();
+		}
 	}
 
 	@Override
