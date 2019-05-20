@@ -13,6 +13,9 @@ public class SQLQueriesConstants {
 	static final String DELETE_NOTE                  = "delete from note where id = :id";
 
 
+	static final String LOAD_USER_BY_ID              = "SELECT * from \"user\" where email = :email limit 1";
+
+
 	static final String USER_TABLE_CREATION_SCRIPT   = "create table if not exists \"user\"\n" +
 			"(\n" +
 			"\tid serial not null\n" +

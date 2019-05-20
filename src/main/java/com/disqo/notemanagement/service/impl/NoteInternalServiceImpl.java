@@ -1,6 +1,6 @@
 package com.disqo.notemanagement.service.impl;
 
-import com.disqo.notemanagement.dao.NoteDao;
+import com.disqo.notemanagement.dao.api.NoteDao;
 import com.disqo.notemanagement.exception.CustomNoteException;
 import com.disqo.notemanagement.model.NoteDto;
 import com.disqo.notemanagement.service.NoteInternalService;

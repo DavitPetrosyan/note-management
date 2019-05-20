@@ -1,4 +1,4 @@
-package com.disqo.notemanagement.dao;
+package com.disqo.notemanagement.dao.api;
 
 import com.disqo.notemanagement.model.NoteDto;
 

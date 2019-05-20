@@ -1,6 +1,7 @@
 package com.disqo.notemanagement.dao;
 
 import com.disqo.notemanagement.model.NoteDto;
+import com.disqo.notemanagement.model.UserDto;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
@@ -26,6 +27,23 @@ public final class DaoHelper {
 					null, //TODO @Davit, convert Date to LocalDate
 					null
 					);
+		}
+	}
+
+
+
+	static class UserMapper
+			implements RowMapper<UserDto> {
+
+		@Override
+		public UserDto mapRow(ResultSet rs, int rowNum)
+				throws SQLException {
+
+			return new UserDto(
+					rs.getInt("id"),
+					rs.getString("email"),
+					rs.getString("password")
+			);
 		}
 	}
 }

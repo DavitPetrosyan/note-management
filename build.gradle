@@ -37,6 +37,7 @@ dependencies {
 
 	compile group: 'com.google.guava', name: 'guava', version: '22.0'
 
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 
 	// postgresql
 	compile('org.postgresql:postgresql:9.4.1208')

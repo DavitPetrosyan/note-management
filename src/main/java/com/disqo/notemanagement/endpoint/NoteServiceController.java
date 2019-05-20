@@ -6,6 +6,8 @@ import com.disqo.notemanagement.service.NoteInternalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -30,6 +32,15 @@ public class NoteServiceController implements NoteService {
 	@Override
 	@GetMapping("")
 	public Collection<NoteDto> getAllNotes() {
+
+		//TODO @Davit, get logged on user for restricting access of others notes
+		/*Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if (principal instanceof UserDetails) {
+			String username = ((UserDetails)principal).getUsername();
+		} else {
+			String username = principal.toString();
+		}*/
+
 		return this.noteInternalService.getAllNotes();
 	}
 

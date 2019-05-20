@@ -1,5 +1,6 @@
 package com.disqo.notemanagement.dao;
 
+import com.disqo.notemanagement.dao.api.NoteDao;
 import com.disqo.notemanagement.model.NoteDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
