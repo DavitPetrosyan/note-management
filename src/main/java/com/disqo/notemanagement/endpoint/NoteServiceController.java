@@ -4,6 +4,8 @@ import com.disqo.notemanagement.api.NoteService;
 import com.disqo.notemanagement.model.NoteDto;
 import com.disqo.notemanagement.service.NoteInternalService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -28,37 +30,40 @@ public class NoteServiceController implements NoteService {
 	@Override
 	@GetMapping("")
 	public Collection<NoteDto> getAllNotes() {
-		return null;
+		return this.noteInternalService.getAllNotes();
 	}
 
 	@Override
 	@GetMapping("/user/{userId}")
 	public Collection<NoteDto> getUserAllNotes(Integer userId) {
-		return null;
+		return this.noteInternalService.getUserAllNotes(userId);
 	}
 
 	@Override
 	@GetMapping("/{id}")
-	public NoteDto getNoteById(Integer id) {
-		return null;
+	public NoteDto getNoteById(@PathVariable("id") Integer noteId) {
+		return this.noteInternalService.getNoteById(noteId);
 	}
 
 	@Override
 	@PostMapping("/")
-	public Object createNote(NoteDto noteDto) {
-		return null;
+	public Object createNote(@RequestBody NoteDto noteDto) {
+		Integer insertedId = this.noteInternalService.createNote(noteDto);
+		return new ResponseEntity<>(insertedId, HttpStatus.CREATED);
 	}
 
 	@Override
 	@PutMapping("/")
-	public Object updateNote(NoteDto noteDto) {
-		return null;
+	public Object updateNote(@RequestBody NoteDto noteDto) {
+		this.noteInternalService.updateNote(noteDto);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	@Override
-	@DeleteMapping("/")
+	@DeleteMapping("/{noteId}")
 	public Object deleteNote(Integer noteId) {
-		return null;
+		this.noteInternalService.deleteNote(noteId);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 }

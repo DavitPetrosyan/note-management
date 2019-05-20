@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.NoSuchElementException;
 
 /**
  * author by davitpetrosyan on 2019-05-20.
@@ -24,31 +25,31 @@ public class NoteInternalServiceImpl implements NoteInternalService {
 
 	@Override
 	public Collection<NoteDto> getAllNotes() {
-		return null;
+		return this.noteDao.fetchAllNotes();
 	}
 
 	@Override
 	public Collection<NoteDto> getUserAllNotes(Integer userId) {
-		return null;
+		return this.noteDao.fetchUserAllNotes(userId);
 	}
 
 	@Override
 	public NoteDto getNoteById(Integer noteId) {
-		return null;
+		return this.noteDao.fetchNoteById(noteId).orElseThrow(NoSuchElementException::new); //TODO @Davit, create custom own exception
 	}
 
 	@Override
 	public Integer createNote(NoteDto noteDto) {
-		return null;
+		return this.noteDao.createNote(noteDto);
 	}
 
 	@Override
 	public void updateNote(NoteDto noteDto) {
-
+		this.noteDao.updateNote(noteDto);
 	}
 
 	@Override
 	public void deleteNote(Integer noteId) {
-
+		this.noteDao.deleteNote(noteId);
 	}
 }

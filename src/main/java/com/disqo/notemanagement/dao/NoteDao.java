@@ -14,21 +14,21 @@ public interface NoteDao {
 	 * Returns all notes of the system.
 	 * @return      Collection of noteDto objects.
 	 */
-	Collection<NoteDto> getAllNotes();
+	Collection<NoteDto> fetchAllNotes();
 
 	/**
 	 * Returns all notes of the provided user.
 	 * @param userId           Provided userId.
 	 * @return                  Collection of noteDto objects.
 	 */
-	Collection<NoteDto> getUserAllNotes(Integer userId);
+	Collection<NoteDto> fetchUserAllNotes(Integer userId);
 
 	/**
 	 * Returns note object by provided id.
 	 * @param noteId            Provided note id.
 	 * @return                  NoteDto object.
 	 */
-	Optional<NoteDto> getNoteById(Integer noteId);
+	Optional<NoteDto> fetchNoteById(Integer noteId);
 
 	/**
 	 * Creates new note.
