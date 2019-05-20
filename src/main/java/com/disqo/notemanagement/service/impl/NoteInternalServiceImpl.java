@@ -1,14 +1,26 @@
 package com.disqo.notemanagement.service.impl;
 
+import com.disqo.notemanagement.dao.NoteDao;
 import com.disqo.notemanagement.model.NoteDto;
 import com.disqo.notemanagement.service.NoteInternalService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
 /**
  * author by davitpetrosyan on 2019-05-20.
  */
+@Service
 public class NoteInternalServiceImpl implements NoteInternalService {
+
+
+	private NoteDao noteDao;
+
+	@Autowired
+	public NoteInternalServiceImpl(NoteDao noteDao) {
+		this.noteDao = noteDao;
+	}
 
 	@Override
 	public Collection<NoteDto> getAllNotes() {

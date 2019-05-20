@@ -1,6 +1,7 @@
 package com.disqo.notemanagement.dao;
 
 import com.disqo.notemanagement.model.NoteDto;
+import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -8,6 +9,7 @@ import java.util.Optional;
 /**
  * author by davitpetrosyan on 2019-05-20.
  */
+@Repository
 public class NoteDaoImpl implements NoteDao {
 
 	@Override

@@ -2,6 +2,8 @@ package com.disqo.notemanagement.endpoint;
 
 import com.disqo.notemanagement.api.NoteService;
 import com.disqo.notemanagement.model.NoteDto;
+import com.disqo.notemanagement.service.NoteInternalService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -13,6 +15,14 @@ import java.util.Collection;
 @RequestMapping("/notes")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class NoteServiceController implements NoteService {
+
+
+	private NoteInternalService noteInternalService;
+
+	@Autowired
+	public NoteServiceController(NoteInternalService noteInternalService) {
+		this.noteInternalService = noteInternalService;
+	}
 
 
 	@Override
