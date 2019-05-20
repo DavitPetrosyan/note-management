@@ -1,0 +1,55 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.4.RELEASE'
+	id 'java'
+}
+
+ext {
+	log4jVersion = '2.10.0'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.disqo'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+configurations {
+	compile.exclude module: "spring-boot-starter-tomcat"
+	compile.exclude module: "jsr311-api"
+	compile.exclude module: "commons-logging"
+	compile.exclude group: "ch.qos.logback"
+	compile.exclude module: "spring-boot-starter-logging"
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-jetty'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-security'
+
+	compile('org.springframework:spring-jdbc:4.1.5.RELEASE')
+
+	compile group: 'com.google.guava', name: 'guava', version: '22.0'
+
+
+	// postgresql
+	compile('org.postgresql:postgresql:9.4.1208')
+	compile('com.zaxxer:HikariCP:2.5.1')
+
+	// log4j2
+	compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: log4jVersion
+	compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: log4jVersion
+	compile group: 'org.apache.logging.log4j', name: 'log4j-1.2-api', version: log4jVersion
+	compile group: 'org.apache.logging.log4j', name: 'log4j-jcl', version: log4jVersion
+	compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: log4jVersion
+	compile group: 'org.apache.logging.log4j', name: 'log4j-jul', version: log4jVersion
+
+	
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
